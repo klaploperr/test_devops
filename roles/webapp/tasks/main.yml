@@ -1,0 +1,9 @@
+- name: Copy Nginx config
+  template:
+    src: nginx.conf.j2
+    dest: /home/ansible/webapp/nginx
+
+- name: Copy index.php file
+  template:
+    src: index.php
+    dest: /home/ansible/webapp/php/src

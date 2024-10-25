@@ -1,0 +1,16 @@
+- hosts: webservers
+  become: yes
+  pre_tasks:
+    - name: Create directories
+      ansible.builtin.file:
+        path: '{{ item }}'
+        state: directory
+      loop:
+        - ./webapp
+        - ./webapp/php
+        - ./webapp/php/src
+        - ./webapp/nginx
+
+  roles:
+    - webapp
+    - {role: docker, become: yes}
